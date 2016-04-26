@@ -55,9 +55,8 @@ func ip2long(ipstr string) (uint32, []byte, error) {
 	return binary.BigEndian.Uint32(ip), ip, nil
 }
 
-var ipip = new(datx)
-
-func Init(ipfile string) {
+func Init(ipfile string) *datx {
+	var ipip = new(datx)
 	ipdata, err := ioutil.ReadFile(ipfile)
 	if err != nil {
 		panic("read file " + ipfile + " failed with:" + err.Error())
@@ -75,9 +74,10 @@ func Init(ipfile string) {
 		}
 	}
 	ipip.offset = indexlenth
+	return ipip
 }
 
-func Find(ip string) (*IPIP, error) {
+func (ipip *datx) Find(ip string) (*IPIP, error) {
 	ipLong, ips, err := ip2long(ip)
 	if err != nil {
 		return nil, err
