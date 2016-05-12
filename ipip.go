@@ -52,6 +52,9 @@ func ip2long(ipstr string) (uint32, []byte, error) {
 		return 0, nil, fmt.Errorf("bad ip string:%v", ip)
 	}
 	ip = ip.To4()
+	if ip == nil {
+		return 0, nil, fmt.Errorf("ipv6 not supported for now:%v", ip)
+	}
 	return binary.BigEndian.Uint32(ip), ip, nil
 }
 
