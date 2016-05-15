@@ -6,7 +6,10 @@ import (
 )
 
 func main() {
-	d := ipip.Init("ipip.datx")
+	d, e := ipip.Init("ipip.datx")
+	if e != nil {
+		panic(e)
+	}
 	if info, err := d.Find("8.8.8.8"); err == nil {
 		fmt.Printf("%+v\n", info)
 	}
