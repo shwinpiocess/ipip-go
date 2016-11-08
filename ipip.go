@@ -110,6 +110,7 @@ func (ipip *Datx) Find(ip string) (*IPIP, error) {
 		return nil, fmt.Errorf("unexpected error")
 	}
 	return &IPIP{
+		IP: ip,
 		CR: string(fields[0]),
 		RG: string(fields[1]),
 		CT: string(fields[2]),
