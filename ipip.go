@@ -16,6 +16,7 @@ type Datx struct {
 }
 
 type IPIP struct {
+	IP string
 	CR string // Country or Region              // 国家
 	RG string // Region                         // 省会或直辖市（国内）
 	CT string // City                           // 地区或城市 （国内）
